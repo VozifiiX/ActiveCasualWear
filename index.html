@@ -11,6 +11,16 @@
         }
 
         /* Basic styling for header and navigation */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
         header {
             background-color: #333;
             color: #fff;
@@ -28,7 +38,7 @@
         }
 
         nav ul li a {
-            color: #fff;
+            color: #ff8800; /* Orange color */
             text-decoration: none;
         }
 
@@ -45,10 +55,11 @@
             text-align: center;
             margin: 20px;
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            width: 200px;
         }
 
         .product:hover {
@@ -74,7 +85,7 @@
         .btn {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #333;
+            background-color: #ff8800; /* Orange color */
             color: #fff;
             text-decoration: none;
             margin-top: 10px;
@@ -90,6 +101,7 @@
         }
     </style>
     <title>Active Casual Wear</title>
+    <base href="/{repository-name}/">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
         let cartItems = [];
@@ -112,7 +124,6 @@
         }
 
         function onSignIn(googleUser) {
-            // Handle the signed-in user.
             var profile = googleUser.getBasicProfile();
             console.log('ID: ' + profile.getId());
             console.log('Name: ' + profile.getName());
@@ -129,6 +140,9 @@
                 });
             }
         }
+
+        // Automatically update cart content on page load
+        updateCartContent();
     </script>
 </head>
 <body>
@@ -136,85 +150,11 @@
         <h1>Active Casual Wear</h1>
         <nav>
             <ul>
-                <li><a href="javascript:void(0);" onclick="scrollToSection('home')">Home</a></li>
-                <li><a href="javascript:void(0);" onclick="scrollToSection('products')">Products</a></li>
-                <li><a href="javascript:void(0);" onclick="scrollToSection('about')">About Us</a></li>
-                <li><a href="javascript:void(0);" onclick="scrollToSection('contact')">Contact</a></li>
-                <li><a href="javascript:void(0);" onclick="scrollToSection('cart')">Cart</a></li>
-                <li><a href="javascript:void(0);" onclick="scrollToSection('account')">Account</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="home">
-        <h2>Welcome to Active Casual Wear</h2>
-        <p>Discover stylish clothing for sports and casual wear.</p>
-    </section>
-
-    <section class="products" id="products">
-        <div class="product">
-            <img src="path-to-your-image1.jpg" alt="Product 1">
-            <h2>Product 1</h2<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* CSS styling for your website */
-        /* ... (your CSS rules here) ... */
-    </style>
-    <title>Active Casual Wear</title>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script>
-        let cartItems = [];
-
-        function addToCart(productName) {
-            cartItems.push(productName);
-            updateCartContent();
-        }
-
-        function updateCartContent() {
-            const cartSection = document.getElementById('cart');
-            const cartList = cartSection.querySelector('.cart-list');
-
-            if (cartItems.length === 0) {
-                cartList.innerHTML = '<p>Your cart is currently empty.</p>';
-            } else {
-                const itemsHTML = cartItems.map(item => `<li>${item}</li>`).join('');
-                cartList.innerHTML = `<ul>${itemsHTML}</ul>`;
-            }
-        }
-
-        function onSignIn(googleUser) {
-            // Handle the signed-in user.
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId());
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail());
-        }
-
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                window.scrollTo({
-                    top: section.offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    </script>
-</head>
-<body>
-    <header>
-        <h1>Active Casual Wear</h1>
-        <nav>
-            <ul>
-                <li><a href="javascript:void(0);" onclick="scrollToSection('home')">Home</a></li>
-                <li><a href="javascript:void(0);" onclick="scrollToSection('products')">Products</a></li>
-                <li><a href="javascript:void(0);" onclick="scrollToSection('about')">About Us</a></li>
-                <li><a href="javascript:void(0);" onclick="scrollToSection('cart')">Cart</a></li>
-                <li><a href="javascript:void(0);" onclick="scrollToSection('account')">Account</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#cart">Cart</a></li>
+                <li><a href="#account">Account</a></li>
             </ul>
         </nav>
     </header>
@@ -225,49 +165,9 @@
     </section>
 
     <section id="products" class="products">
-        <div class="product">
-            <img src="path-to-your-image1.jpg" alt="Product 1">
-            <h2>Product 1</h2>
-            <p>Description of Product 1.</p>
-            <button class="btn" onclick="addToCart('Product 1')">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="path-to-your-image2.jpg" alt="Product 2">
-            <h2>Product 2</h2>
-            <p>Description of Product 2.</p>
-            <button class="btn" onclick="addToCart('Product 2')">Add to Cart</button>
-        </div>
-        <!-- Add more product sections as needed -->
+        <!-- Product sections here -->
     </section>
 
     <section id="about">
         <h2>About Us</h2>
-        <p>We are passionate about providing high-quality clothing for sports and casual wear.</p>
-    </section>
-
-    <section id="cart">
-        <h2>Your Cart</h2>
-        <div class="cart-list"></div>
-    </section>
-
-    <section id="account">
-        <h2>Account</h2>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    </section>
-
-    <footer>
-        <p>&copy; 2023 Active Casual Wear. All rights reserved.</p>
-    </footer>
-
-    <script>
-        updateCartContent();
-    </script>
-</body>
-</html>
-
-            <p>Description of Product 1.</p>
-            <button class="btn" onclick="addToCart('Product 1')">Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="path-to-your-image2.jpg" alt="Product 2">
-            <h2>Product
+        <p>We are passionate about providing high-quality clothing for sports and casual clothing!
