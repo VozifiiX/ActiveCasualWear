@@ -1,51 +1,77 @@
-
-// script.js
-let cartItems = [];
-let signedInUser = null;
-
-function addToCart(productName) {
-    cartItems.push(productName);
-    updateCartContent();
+/* Reset default margin and padding */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
 }
 
-function updateCartContent() {
-    const cartSection = document.getElementById('cart');
-    const cartList = cartSection.querySelector('.cart-list');
-
-    if (cartItems.length === 0) {
-        cartList.innerHTML = '<p>Your cart is currently empty.</p>';
-    } else {
-        const itemsHTML = cartItems.map(item => `<li>${item}</li>`).join('');
-        cartList.innerHTML = `<ul>${itemsHTML}</ul>`;
-    }
+/* Basic styling for header and navigation */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
 }
 
-function onSignIn(googleUser) {
-    signedInUser = googleUser.getBasicProfile();
-    console.log('ID: ' + signedInUser.getId());
-    console.log('Name: ' + signedInUser.getName());
-    console.log('Image URL: ' + signedInUser.getImageUrl());
-    console.log('Email: ' + signedInUser.getEmail());
+nav ul {
+    list-style: none;
 }
 
-function signOut() {
-    const auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(() => {
-        console.log('User signed out.');
-        signedInUser = null;
-    });
+nav ul li {
+    display: inline;
+    margin-right: 20px;
 }
 
-function scrollToSection(sectionId) {
-
-    const section = document.getElementById(sectionId);
-    if (section) {
-        window.scrollTo({
-            top: section.offsetTop,
-            behavior: 'smooth'
-        });
-    }
+nav ul li a {
+    color: #ff8800; /* Orange color */
+    text-decoration: none;
+    font-weight: bold;
 }
 
-// Automatically update cart content on page load
-updateCartContent();
+/* Styling for sections */
+section {
+    padding: 2rem;
+}
+
+section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+section p {
+    font-size: 1.2rem;
+    color: #777;
+}
+
+/* Styling for buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff8800; /* Orange color */
+    color: #fff;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-google {
+    background-color: #dc4e41; /* Google Red */
+}
+
+.email-signup {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
