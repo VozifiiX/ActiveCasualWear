@@ -1,77 +1,61 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ... (previous head content) ... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Active Casual Wear</title>
     <base href="/{repository-name}/">
-    <link rel="stylesheet" href="styles.css">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script>
-        let cartItems = [];
-
-        function addToCart(productName) {
-            cartItems.push(productName);
-            updateCartContent();
-        }
-
-        function updateCartContent() {
-            const cartSection = document.getElementById('cart');
-            const cartList = cartSection.querySelector('.cart-list');
-
-            if (cartItems.length === 0) {
-                cartList.innerHTML = '<p>Your cart is currently empty.</p>';
-            } else {
-                const itemsHTML = cartItems.map(item => `<li>${item}</li>`).join('');
-                cartList.innerHTML = `<ul>${itemsHTML}</ul>`;
-            }
-        }
-
-        function onSignIn(googleUser) {
-            // Handle the signed-in user.
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId());
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail());
-        }
-
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                window.scrollTo({
-                    top: section.offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // Automatically update cart content on page load
-        updateCartContent();
-    </script>
+    <script src="script.js"></script>
 </head>
 <body>
     <header>
-        <!-- ... (header content) ... -->
+        <nav>
+            <ul class="horizontal">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#cart">Cart</a></li>
+                <li><a href="#account">Account</a></li>
+            </ul>
+        </nav>
     </header>
 
     <section id="home">
-        <!-- ... (home section content) ... -->
+        <h2>Welcome to Active Casual Wear</h2>
+        <p>Discover stylish clothing for sports and casual wear.</p>
     </section>
 
     <section id="products" class="products">
-        <!-- ... (products section content) ... -->
+        <!-- Product sections here -->
     </section>
 
     <section id="about">
-        <!-- ... (about section content) ... -->
+        <h2>About Us</h2>
+        <p>We are passionate about providing high-quality clothing for sports and casual wear.</p>
+    </section>
+
+    <section id="cart">
+        <h2>Your Cart</h2>
+        <div class="cart-list">
+            <!-- Cart items will be dynamically added here -->
+        </div>
     </section>
 
     <section id="account">
-        <!-- ... (account section content) ... -->
+        <h2>Account</h2>
+        <button class="btn-google" onclick="signInWithGoogle()">Sign in with Google</button>
+        <div class="email-signup">
+            <h3>Sign up with Email</h3>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <button class="btn-email">Sign Up</button>
+        </div>
     </section>
 
-    <!-- Footer section here -->
-
+    <footer>
+        <p>&copy; 2023 Active Casual Wear. All rights reserved.</p>
+    </footer>
 </body>
 </html>
